@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Numbers from './Numbers';
+import Operations from './Operations';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
 
 function Buttons() {
     return (
         <View style={styles.buttons}>
-            <View style={styles.numbers}></View>
-            <View style={styles.operations}></View>
+            <Numbers />
+            <Operations />
         </View>
     )
 };
@@ -13,15 +15,7 @@ function Buttons() {
 const styles = StyleSheet.create({
     buttons: {
         flex: 7,
-        flexDirection: 'row'
-    },
-    numbers: {
-        flexGrow: 3,
-        backgroundColor: 'yellow'
-    },
-    operations: {
-        flex: 1,
-        backgroundColor: 'blue'
+        flexDirection: 'row',
     }
 });
 

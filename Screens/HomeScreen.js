@@ -7,9 +7,9 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 function HomeScreen() {
     return (
         <View style={styles.container}>
-            <Result />
-            <Calculation />
-            <Buttons />
+                <Result />
+                <Calculation />
+                <Buttons />
         </View>
     )
 };
@@ -17,7 +17,11 @@ function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#fff'
     },
+    calculateContainer: {
+        paddingRight: 40
+    }
 });
 
 export default HomeScreen;
