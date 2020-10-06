@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View, StyleSheet, ImageBackground } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
 
 function SplashScreen(props) {
 
     setTimeout(() => {
         props.navigation.navigate('Home');
-    }, 3000);
+    }, 5000);
 
     return (
         <ImageBackground 
