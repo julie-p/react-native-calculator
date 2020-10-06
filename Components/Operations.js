@@ -1,13 +1,24 @@
 import React from 'react'
-import { Text, View, TouchableOpacity, Button, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
 
 function Operations() {
     return (
         <View style={styles.operations}>
-            <View style={styles.button}><Button title="+" color="#FD9583" /></View>
-            <View style={styles.button}><Button title="+" color="#FD9583"/></View>
-            <View style={styles.button}><Button title="+" color="#FD9583"/></View>
-            <View style={styles.button}><Button title="+" color="#FD9583"/></View>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>+</Text>
+            </TouchableOpacity>
         </View>
     )
 };
@@ -22,7 +33,7 @@ const styles = StyleSheet.create({
     button: {
         width: 50,
         borderRadius: 100,
-        backgroundColor: '#ffff',
+        backgroundColor: '#fff8f6',
         shadowOffset: {
             width: 0,
             height: 3,
@@ -31,8 +42,12 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
         elevation: 6,
-        paddingVertical: 5,
+        paddingVertical: 15,
         paddingHorizontal: 10,
+    },
+    buttonText: {
+        color: '#E98B31',
+        textAlign: 'center'
     }
 });
 

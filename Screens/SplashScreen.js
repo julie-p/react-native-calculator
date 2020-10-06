@@ -5,11 +5,12 @@ function SplashScreen(props) {
 
     setTimeout(() => {
         props.navigation.navigate('Home');
-    }, 4000);
+    }, 3000);
 
     return (
         <ImageBackground 
-            source={require('../assets/splash-screen.gif')} 
+            resizeMode='contain'
+            source={require('../assets/splash-screen-2.gif')} 
             style={styles.container}
         >
         </ImageBackground>
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: '#fafafa'
     },
 });
 

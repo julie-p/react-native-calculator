@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
         paddingRight: 20
     },
     calculationText: {
-        fontSize: 24,
-        color: '#545454'
+        fontSize: 20,
+        color: '#2c3a6a'
     }
 });
 

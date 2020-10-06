@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 function Menu() {
     return (
         <View>
-            <Text> textInComponent </Text>
+            <Text> </Text>
         </View>
     )
 };
