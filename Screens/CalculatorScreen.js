@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
-import DrawerContent from '../Components/DrawerContent';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { 
+    Text, 
+    View, 
+    StyleSheet, 
+    TouchableOpacity 
+} from 'react-native';
+import { 
+    Icon,  
+    Header,
+    Left,
+    Button
+} from 'native-base';
+import { DrawerActions } from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
-function CalculatorScreen() {
+function CalculatorScreen( {navigation} ) {
 
+    const { colors } = useTheme();
     const [ currentValue, setCurrentValue ] = useState("");
     const [ displayResult, setDisplayResult ] = useState("");
     const [ operator, setOperator ] = useState(['√', '/', '*', '-', '+']);
@@ -61,8 +74,8 @@ function CalculatorScreen() {
     for (let i = 0; i < buttons.length; i++) {
         let row = [];
         for (let j = 0; j < 3; j++) {
-            row.push(<TouchableOpacity key={buttons[i][j]} onPress={() => buttonPressed(buttons[i][j])} style={styles.button}>
-                        <Text style={styles.text}>{buttons[i][j]}</Text>
+            row.push(<TouchableOpacity key={buttons[i][j]} onPress={() => buttonPressed(buttons[i][j])} style={[styles.button, {backgroundColor:colors.buttonColor}]}>
+                        <Text style={[styles.text, {color:colors.text}]}>{buttons[i][j]}</Text>
                      </TouchableOpacity>)
         }
         rows.push(<View key={i} style={styles.row}>{row}</View>);
@@ -70,15 +83,20 @@ function CalculatorScreen() {
     
     let ops = [];
     for (let i = 0; i < operator.length; i++) {
-        ops.push(<TouchableOpacity key={operator[i]} onPress={() => operation(operator[i])} style={styles.button}>
-                    <Text style={[styles.text, styles.textAlt]}>{operator[i]}</Text>
+        ops.push(<TouchableOpacity key={operator[i]} onPress={() => operation(operator[i])} style={[styles.button, {backgroundColor:colors.altButton}]}>
+                    <Text style={[styles.text, {color:colors.altText}]}>{operator[i]}</Text>
                  </TouchableOpacity>)
     };
 
     return (
-        <View style={styles.container}>
-
-            <DrawerContent />
+        <View style={[styles.container, {backgroundColor:colors.backgroundColor}]}>
+            <Header style={[styles.header, {backgroundColor:colors.backgroundColor}]}>
+                <Left>
+                    <Button transparent onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+                        <Icon ios='ios-menu' android="md-menu" style={[styles.icon, {color:colors.iconColor}]} />
+                    </Button>
+                </Left>
+            </Header>
 
             <View style={styles.calculation}>
                 <Text style={styles.calculationText}>{ currentValue || 0 }</Text>
@@ -103,6 +121,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#fafafa',
         paddingVertical: 30,
         paddingHorizontal: 15
+    },
+    header: {
+        backgroundColor: '#fafafa',
+        borderBottomWidth: 0,
+        marginLeft: 10
+    },
+    icon: {
+        color: '#8998e3',
+        fontSize: 30
     },
     calculation: {
         flex: 2,
@@ -159,9 +186,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
-    textAlt: {
+    /* textAlt: {
         color: '#ffa801'
-    },
+    } */
 });
 
 export default CalculatorScreen;
