@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Menu from '../Components/Menu';
+import DrawerContent from '../Components/DrawerContent';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 function CalculatorScreen() {
@@ -10,7 +10,6 @@ function CalculatorScreen() {
     const [ buttons, setButtons ] = useState([['C', '+/-', '%'], [7, 8, 9], [4, 5, 6], [1, 2, 3], [0, '.', '=']]);
 
     function calculateResult() {
-        console.log(currentValue, eval(currentValue))
         setCurrentValue(eval(currentValue));
     };
 
@@ -53,8 +52,6 @@ function CalculatorScreen() {
             case '-':
             case '*':
             case '/':
-                const lastChar = currentValue.split('').pop();
-                if (operator.indexOf(lastChar) > 0) return;
                 if (currentValue === "") return;
                 setCurrentValue(currentValue + op);   
         }
@@ -73,16 +70,16 @@ function CalculatorScreen() {
     
     let ops = [];
     for (let i = 0; i < operator.length; i++) {
-        ops.push(<TouchableOpacity key={operator[i]} onPress={() => operation(operator[i])} style={[styles.button, styles.color]}>
-                    <Text style={styles.text}>{operator[i]}</Text>
+        ops.push(<TouchableOpacity key={operator[i]} onPress={() => operation(operator[i])} style={styles.button}>
+                    <Text style={[styles.text, styles.textAlt]}>{operator[i]}</Text>
                  </TouchableOpacity>)
     };
 
     return (
         <View style={styles.container}>
 
-            <Menu />
-            
+            <DrawerContent />
+
             <View style={styles.calculation}>
                 <Text style={styles.calculationText}>{ currentValue || 0 }</Text>
             </View>
@@ -104,17 +101,20 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fafafa',
-        marginBottom: 10
+        paddingVertical: 30,
+        paddingHorizontal: 15
     },
     calculation: {
-        flex: 1,
+        flex: 2,
         justifyContent: 'center',
         alignItems: 'flex-end',
-        paddingRight: 20
+        paddingRight: 20,
+        marginTop: 40
     },
     calculationText: {
         fontSize: 30,
-        color: '#2c3a6a'
+        fontWeight: '600',
+        color: '#d5ddfd'
     },
     buttons: {
         flex: 7,
@@ -135,20 +135,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 50,
         borderRadius: 100,
-        backgroundColor: '#8998e3',
+        backgroundColor: '#fafafa',
         shadowOffset: {
-            width: 5,
+            width: 2,
             height: 4,
         },
-        shadowColor: '#545454',
-        shadowOpacity: 0.54,
-        shadowRadius: 5.65,
+        shadowColor: '#555',
+        shadowOpacity: 0.37,
+        shadowRadius: 5,
         elevation: 6,
         paddingVertical: 15,
         paddingHorizontal: 10,
-    },
-    color: {
-        backgroundColor: '#ec873c'
     },
     operations: {
         flex: 1,
@@ -157,11 +154,14 @@ const styles = StyleSheet.create({
         paddingRight: 40
     },
     text: {
-        color: '#fff',
+        color: '#8998e3',
         textAlign: 'center',
         fontSize: 16,
-        fontWeight: 'bold'
-    }
+        fontWeight: 'bold',
+    },
+    textAlt: {
+        color: '#ffa801'
+    },
 });
 
 export default CalculatorScreen;
