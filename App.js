@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SplashScreen from './Screens/SplashScreen';
-import CalculatorScreen from './Screens/CalculatorScreen';
+import HomeScreen from './Screens/HomeScreen';
 import DrawerContent from './Components/DrawerContent';
 import { 
   NavigationContainer, 
@@ -26,7 +26,7 @@ function DrawerRoute() {
     >
       <Drawer.Screen 
         name="Home" 
-        component={CalculatorScreen}
+        component={HomeScreen}
         options={{
           drawerIcon: ({focused, color, size}) => (
             <Icon name="home" style={{fontSize: size, color: color}} />

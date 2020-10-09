@@ -10,7 +10,7 @@ function SplashScreen(props) {
     return (
         <ImageBackground 
             resizeMode='contain'
-            source={require('../assets/splash-screen-2.gif')} 
+            source={require('../assets/splash-screen.gif')} 
             style={styles.container}
         >
         </ImageBackground>

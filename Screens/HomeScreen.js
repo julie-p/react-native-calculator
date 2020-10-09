@@ -3,7 +3,7 @@ import {
     Text, 
     View, 
     StyleSheet, 
-    TouchableOpacity 
+    TouchableOpacity
 } from 'react-native';
 import { 
     Icon,  
@@ -14,31 +14,38 @@ import {
 import { DrawerActions } from '@react-navigation/native';
 import { useTheme } from '@react-navigation/native';
 
-function CalculatorScreen( {navigation} ) {
+function HomeScreen( {navigation} ) {
 
     const { colors } = useTheme();
     const [ currentValue, setCurrentValue ] = useState("");
     const [ displayResult, setDisplayResult ] = useState("");
     const [ operator, setOperator ] = useState(['√', '/', '*', '-', '+']);
-    const [ buttons, setButtons ] = useState([['C', '+/-', '%'], [7, 8, 9], [4, 5, 6], [1, 2, 3], [0, '.', '=']]);
+    const [ buttons, setButtons ] = useState([['AC', 'C', '%'], [7, 8, 9], [4, 5, 6], [1, 2, 3], [0, '.', '=']]);
 
-    function calculateResult() {
-        setCurrentValue(eval(currentValue));
-    };
-
+    //Bouton clear all
     function clear() {
         setCurrentValue("");
         setDisplayResult("");
     };
 
+    //Bouton delete
+    function del() {
+        let text = currentValue.split('');
+        text.pop();
+        setCurrentValue(text.join(''));
+    };
+
+    //Bouton +/-
     function sign() {
         setCurrentValue(currentValue.charAt(0) === '-' ? currentValue.slice(1) : `-${currentValue}`);
     };
 
+    //Pourcentage
     function percent() {
         setCurrentValue(`${parseFloat(currentValue) / 100}`);
     };
 
+    //Racine carrée
     function squareRoot() {
         setCurrentValue(`${Math.sqrt(currentValue).toFixed(8)}`);
     };
@@ -47,10 +54,10 @@ function CalculatorScreen( {navigation} ) {
         switch (input) {
             case '=':
                 return calculateResult();
-            case 'C':
+            case 'AC':
                 return clear();
-            case '+/-':
-                return sign();
+            case 'C':
+                return del();
             case '%':
                 return percent();
         }
@@ -66,8 +73,13 @@ function CalculatorScreen( {navigation} ) {
             case '*':
             case '/':
                 if (currentValue === "") return;
-                setCurrentValue(currentValue + op);   
+                setCurrentValue(currentValue + op);  
+                break;
         }
+    };
+
+    function calculateResult() {
+        setCurrentValue(eval(currentValue));
     };
 
     let rows = [];
@@ -185,10 +197,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 16,
         fontWeight: 'bold',
-    },
-    /* textAlt: {
-        color: '#ffa801'
-    } */
+    }
 });
 
-export default CalculatorScreen;
+export default HomeScreen;
