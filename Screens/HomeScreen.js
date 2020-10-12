@@ -35,11 +35,6 @@ function HomeScreen( {navigation} ) {
         setCurrentValue(text.join(''));
     };
 
-    //Bouton +/-
-    function sign() {
-        setCurrentValue(currentValue.charAt(0) === '-' ? currentValue.slice(1) : `-${currentValue}`);
-    };
-
     //Pourcentage
     function percent() {
         setCurrentValue(`${parseFloat(currentValue) / 100}`);

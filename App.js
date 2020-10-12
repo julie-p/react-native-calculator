@@ -43,7 +43,7 @@ export default function App() {
 
   const darkTheme={
     ...DarkTheme,
-    colors:{
+    colors: {
       ...DarkTheme.colors,
       backgroundColor:"#27345f",
       iconColor:"#d5ddfd",
@@ -57,7 +57,7 @@ export default function App() {
 
   const lightTheme ={
     ...DefaultTheme,
-    colors:{
+    colors: {
       ...DefaultTheme.colors,
       backgroundColor:"#fafafa",
       iconColor:"#8998e3",
